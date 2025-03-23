@@ -1,7 +1,17 @@
 'use strict';
 
+const express = require('express');
 const Constants = require('./src/util/Constants');
 
+const app = express();
+const port = 3000; // আপনি চাইলে এটি পরিবর্তন করতে পারেন
+
+// API বা সার্ভারের জন্য রাউট যুক্ত করুন
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
+// মূল মডিউল রপ্তানি
 module.exports = {
     Client: require('./src/Client'),
     
@@ -31,3 +41,8 @@ module.exports = {
     
     ...Constants
 };
+
+// সার্ভার চালানো
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
